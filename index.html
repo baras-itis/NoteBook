@@ -6,19 +6,27 @@
     <title>Document</title>
   </head>
   <body>
-    <canvas
-      id="blackboard"
-      width="500"
-      height="500"
-      style="
-        border: 1px solid black;
-        display: grid;
-        grid-column: repeat(1fr, 12);
-      "
-    >
-      <canvas id="layout" width="500" height="500"></canvas>
-    </canvas>
-    <button style="padding: 2rem" id="clearButton">Clear</button>
     <script type="module" src="src/main.js"></script>
+
+    <main style="position: relative; padding: 0; margin: 0">
+      <div>
+        <button style="justify-self: center" id="clearButton">Clear</button>
+      </div>
+      <canvas id="blackboard" style="border: 1px solid black"> </canvas>
+    </main>
   </body>
 </html>
+
+<!-- style="
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          border: 1px solid black;
+          width: 50px;
+          height: 50px;
+          border-radius: 100%;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+        -->

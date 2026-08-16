@@ -1,82 +1,50 @@
 let isDrawing = false;
-let x = 0;
-let y = 0;
+let x = 0,
+  y = 0;
 
+// Настройка рабочей зоны
+const height = window.innerHeight - 10;
+const width = window.innerWidth - 10;
 const canvas = document.getElementById("blackboard");
+canvas.width = width;
+canvas.height = height;
 const context = canvas.getContext("2d");
 
-const layout = document.getElementById("blackboard");
-const layoutcontext = layout.getContext("2d");
-
+// Кнопка сброса рисулек
 const button = document.getElementById("clearButton");
-let clear = false;
-
 button.addEventListener("click", (e) => {
-  clear = true;
-  if (clear) {
-    clearFunction(context);
-    clear = false;
-  }
+  isDrawing = false;
+  Clear(context);
 });
 
-function clearFunction(context) {
-  context.clearRect(0, 0, canvas.width, canvas.height);
+// Функция сброса рисулек
+function Clear() {
+  context.clearRect(0, 0, width, height);
+  console.log("cleared");
 }
 
-canvas.addEventListener("mousedown", (e) => {
-  x = e.offsetX;
-  y = e.offsetY;
-  isDrawing = true;
-  drawGrid(2, 20, 20, "#ccc");
-});
-
-canvas.addEventListener("mousemove", (e) => {
-  if (isDrawing) {
-    drawLine(context, x, y, e.offsetX, e.offsetY);
-    x = e.offsetX;
-    y = e.offsetY;
-  }
-  drawGrid(2, 20, 20, "#ccc");
-});
-
-window.addEventListener("mouseup", (e) => {
-  if (isDrawing) {
-    drawLine(context, x, y, e.offsetX, e.offsetY);
-    x = 0;
-    y = 0;
-    isDrawing = false;
-  }
-  drawGrid(2, 20, 20, "#ccc");
-});
-
-function drawLine(context, x1, y1, x2, y2) {
+function Draw(x, y, x1, y1) {
   context.beginPath();
-  context.strokeStyle = "black";
-  context.lineWidth = 1;
-  context.moveTo(x1, y1);
-  context.lineTo(x2, y2);
+  context.moveTo(x, y);
+  context.lineTo(x1, y1);
   context.stroke();
   context.closePath();
 }
 
-function drawGrid(lineWidth, cellWidth, cellHeight, color) {
-  layoutcontext.strokeStyle = color;
-  layoutcontext.lineWidth = lineWidth;
+canvas.addEventListener("mousedown", (e) => {
+  console.log("Рисули");
+  x = e.offsetX;
+  y = e.offsetY;
+  return (isDrawing = true);
+});
 
-  let width = layoutcontext.width;
-  let height = layoutcontext.height;
+canvas.addEventListener("mousemove", (e) => {
+  let x = e.offsetX;
+  let y = e.offsetY;
 
-  for (let x = 0; x <= width; x += cellWidth) {
-    layoutcontext.beginPath();
-    layoutcontext.moveTo(x, 0);
-    layoutcontext.lineTo(x, height);
-    layoutcontext.stroke();
-  }
+  isDrawing ? Draw(x, y, e.offsetX, e.offsetY) : ([x, y] = [0, 0]);
+});
 
-  for (let y = 0; y <= height; y += cellHeight) {
-    layoutcontext.beginPath();
-    layoutcontext.moveTo(0, y);
-    layoutcontext.lineTo(width, y);
-    layoutcontext.stroke();
-  }
-}
+canvas.addEventListener("mouseup", (e) => {
+  isDrawing = false;
+});
