@@ -1,0 +1,10 @@
+- [ ] make button for picking colors;
+- [ ] make grid
+- [ ] make diff types of grid
+- [ ] put logic in other section
+- [ ] add exporting in pdf
+- [ ] add button for creating new Page
+
+.toDataUrl - создать из холста изображение
+jsPDF - для вставки картирнки
+canvas2pdf
