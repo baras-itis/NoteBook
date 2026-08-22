@@ -1,68 +1,49 @@
-// Styles
-const blackboard = await document.querySelector(".blackboard");
-const main = await document.getElementById("main");
-main.style.cssText =
-  "overflow-x:hidden; display:grid; height:100%; margin:0; padding:0; display:relative;";
+// Ширина и высота
+const [width, height] = [400, 400];
 
-// canvas width & height
+// Координаты
+let [x,y] = [0,0];
+let isDrawing = false;
 
-const canvasHeight = window.innerHeight;
-const canvasWidth = window.innerWidth;
+const blackboard = document.getElementById("black-board");
+blackboard.width = width;
+blackboard.height = height;
+const context = blackboard.getContext('2d');
 
-// Canvas & preparing desk
-const canvas = document.getElementById("blackBoard");
-canvas.width = canvasWidth;
-canvas.height = canvasHeight;
-canvas.style.cssText = "outline: thick double #32a1ce;";
+const clear = document.getElementById("clearButton");
+clear.addEventListener("mousedown", (event)=>{
+  clearContext(context);
+})
 
-// Context for drawing
-const context = canvas.getContext("2d");
+// Добавление отслеживание при движении мыши
+blackboard.addEventListener("mousemove", (event) => {
+  
+  let currentX = event.offsetX;
+  let currentY = event.offsetY;
+  
+  if(isDrawing){
+    context.beginPath();
+    context.moveTo(x,y);
+    context.lineTo(currentX, currentY);
+    [x,y] = [currentX, currentY]
+    context.stroke();
+    context.closePath();
+  }
+});
 
-context.strokeStyle = "black";
-context.moveTo(10, 100);
-context.lineTo(0, 0);
-context.stroke();
-
-// Logic of draw
-
-/*
-  boolean variable
-    watchs if the mouse on the board, 
-    true -> we draw 
-    false -> no draw
-
-    x, y - poisition of our mouse
-*/
-
-let isDrawing = false,
-  lastX = 0,
-  lastY = 0;
-
-canvas.addEventListener("mousedown", (e) => {
+blackboard.addEventListener("mousedown", (event) => {
   isDrawing = true;
-  lastX = e.offsetX;
-  lastY = e.offsetY;
+  [x, y] = [event.offsetX, event.offsetY]; 
 });
 
-canvas.addEventListener("mousemove", (e) => {
-  if (!isDrawing) return;
-  const currentX = e.offsetX;
-  const currentY = e.offsetY;
-
-  context.beginPath();
-  context.moveTo(lastX, lastY);
-  context.lineTo(currentX, currentY);
-  context.stroke();
-  context.closePath();
-
-  lastX = currentX;
-  lastY = currentY;
-});
-
-canvas.addEventListener("mouseup", () => {
+blackboard.addEventListener("mouseup", (event) => {
   isDrawing = false;
-});
+  [x, y] = [event.offsetX, event.offsetY]; 
+})
 
-canvas.addEventListener("mouseleave", () => {
-  isDrawing = false;
-});
+
+// Функция очистки
+
+function clearContext(context){
+  context.clearRect(0,0, width, height);
+}
