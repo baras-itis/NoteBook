@@ -1,5 +1,5 @@
 // Ширина и высота
-const [width, height] = [400, 400];
+const [width, height] = [1200, 800];
 
 // Координаты
 let [x,y] = [0,0];
@@ -10,14 +10,14 @@ let isDrawing = false;
 // цвет линий
 let strokeColor = 'black';
 let changeColor = false;
-let currentColorIndex = 0;  
+let currentColorIndex = 1;  
 
 // Все цвета для рисования
 const colors = [
-  "black",
-  "yellow",
-  "red",
-  "green"
+  "#1a1423",
+  "#ffdc5e",
+  "#ff0054",
+  "#7fd8be"
 ];
 
 async function change(index){
@@ -32,7 +32,7 @@ async function change(index){
   console.log(index, colors[index]); 
   changeColor = false;
   const showCurrentColor = document.getElementById("current-color");
-  showCurrentColor.style.cssText = `border: 1px solid black; width:20px; height:20px; background-color: ${strokeColor}`;
+  showCurrentColor.style.cssText = `corenr-shape:squircle; border-radius:5px; border: 1px solid black; width:50px; height:50px; background-color: ${strokeColor}`;
 
 }
 
@@ -40,10 +40,10 @@ async function change(index){
 const swapColors = document.getElementById("swap-button");
 swapColors.addEventListener("mousedown", (event) => {
   changeColor = true;
+  
   changeColor ? change(currentColorIndex) : false;
 })
 
-// Див блок показывающий наш цвет
 
 
 // Там где мы рисуем
@@ -74,6 +74,11 @@ blackboard.addEventListener("mousemove", (event) => {
     context.closePath();
   }
 });
+
+blackboard.addEventListener("mouseleave", (event)=>{
+  isDrawing = false;
+
+})
 
 blackboard.addEventListener("mousedown", (event) => {
   isDrawing = true;
