@@ -9,8 +9,17 @@
   <body>
 
     <main id="main">
-      <canvas id="black-board" class="blackboard" style = "border:1px solid black;"></canvas>
-      <button id="clearButton"></button>
+      <div style = "display:grid; position:relative; grid-template-columns:1fr 1fr 1fr;">
+      <iframe src="/src/copmonents/navbar/navbar.html" class = "menu"></iframe>
+      <canvas id="black-board" class="blackboard" style = "border:1px solid black; grid-column-start: 2; "></canvas>
+     
+      <div>
+        <div id = "current-color">
+        </div>
+         <button id="clearButton" style = "max-height: 100px; max-width: 100px; padding:0; position:absolute; right:0; left:1;">Clear</button>
+      <button id = "swap-button">Swap colors</button>
+      </div>
+      </div>
     </main>
     
     <script type="module" src="./main.js"></script>
