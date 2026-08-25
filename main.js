@@ -1,9 +1,11 @@
+import {color} from "./src/copmonents/navbar/changeColor.js"
 // Ширина и высота
 const [width, height] = [1200, 800];
 
+
 // Координаты
 let [x,y] = [0,0];
-
+let [currx, curry] = [0,0];
 // рисуем ли мы сейчас
 let isDrawing = false;
 
@@ -11,14 +13,6 @@ let isDrawing = false;
 let strokeColor = 'black';
 let changeColor = false;
 let currentColorIndex = 1;  
-
-// Все цвета для рисования
-const colors = [
-  "#1a1423",
-  "#ffdc5e",
-  "#ff0054",
-  "#7fd8be"
-];
 
 
 
@@ -30,19 +24,30 @@ blackboard.width = width;
 blackboard.height = height;
 const context = blackboard.getContext('2d');
 
+const rectangle = document.getElementById("rectangle");
+rectangle.addEventListener("mousedown", event => {
+  isDrawing = false;
+  [x,y] = [event.offsetX, event.offsetY];
+  createRectangle(currx,curry, x,y)
+})
+
+const createRectangle = (x,y, x1,y1) => {
+  context.react(x,y, x1,y1);
+  context.stroke();
+} 
 
 // Добавление отслеживание при движении мыши
 blackboard.addEventListener("mousemove", (event) => {
   
   let currentX = event.offsetX;
   let currentY = event.offsetY;
-  
+  [currx, curry] = [event.offsetX, event.offsetY];
   if(isDrawing){
     context.beginPath();
     context.moveTo(x,y);
     context.lineTo(currentX, currentY);
     [x,y] = [currentX, currentY]
-    context.strokeStyle = strokeColor;
+    context.strokeStyle = color;
     context.stroke();
 
     context.closePath();
@@ -64,4 +69,4 @@ blackboard.addEventListener("mouseup", (event) => {
   [x, y] = [event.offsetX, event.offsetY]; 
 })
 
-export {context}
+export {context, isDrawing}
