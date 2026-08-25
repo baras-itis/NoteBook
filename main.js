@@ -20,29 +20,7 @@ const colors = [
   "#7fd8be"
 ];
 
-async function change(index){
-  if(currentColorIndex === colors.length){
-    index = 0;
-    currentColorIndex = 1;
-    strokeColor = 'black';
-  }
-  else{     currentColorIndex +=1;
- strokeColor = colors[index];
-  }
-  console.log(index, colors[index]); 
-  changeColor = false;
-  const showCurrentColor = document.getElementById("current-color");
-  showCurrentColor.style.cssText = `corenr-shape:squircle; border-radius:5px; border: 1px solid black; width:50px; height:50px; background-color: ${strokeColor}`;
 
-}
-
-// Кнопка для смены цвета линии
-const swapColors = document.getElementById("swap-button");
-swapColors.addEventListener("mousedown", (event) => {
-  changeColor = true;
-  
-  changeColor ? change(currentColorIndex) : false;
-})
 
 
 
@@ -52,10 +30,6 @@ blackboard.width = width;
 blackboard.height = height;
 const context = blackboard.getContext('2d');
 
-const clear = document.getElementById("clearButton");
-clear.addEventListener("mousedown", (event)=>{
-  clearContext(context);
-})
 
 // Добавление отслеживание при движении мыши
 blackboard.addEventListener("mousemove", (event) => {
@@ -90,9 +64,4 @@ blackboard.addEventListener("mouseup", (event) => {
   [x, y] = [event.offsetX, event.offsetY]; 
 })
 
-
-// Функция очистки
-
-function clearContext(context){
-  context.clearRect(0,0, width, height);
-}
+export {context}
