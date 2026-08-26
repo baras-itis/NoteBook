@@ -15,7 +15,20 @@
         <ul id = "list">
 
         </ul>
+        <form>
+            <input type="text" name = "todo" placeholder="..." />
+            <input type="button" onclick="sendInfo()" value = "submit" />
+        </form>
     </main>
+    <script>
+        const sendInfo = () => {
+        let p = event.target.parentElemnt();
+            message("welcome", p);
+        }
+        function meesage(m){
+            document.getElementById("list").innerHTML = m;
+        }
+    </script>
     <script src = "src/todo/logic.js"></script>
 </body>
 </html>

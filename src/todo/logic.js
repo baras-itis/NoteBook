@@ -4,6 +4,13 @@ date.textContent = today;
 
 const list = document.getElementById("list");
 
+const array = ['1', '2'];
+
+for(let i = 0; i < array.length; i++){
+    let listItem = list.appendChild("li");
+    listItem.textContent(array[i])
+}
+
 /* 
     есть список
     через инпут вставляем пушим в массив новое значение
