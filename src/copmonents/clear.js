@@ -1,4 +1,4 @@
-import { context } from "../main.js";
+import { context } from "../../main.js";
 const clear = document.getElementById("clear");
 
 clear.addEventListener("mousedown", (event) => {
