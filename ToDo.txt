@@ -1,11 +1,10 @@
 - [X] make button for picking colors;
-- [ ] make grid
+- [X] make grid
 - [ ] make diff types of grid
 - [ ] put logic in other section
 - [ ] add exporting in pdf
-- [ ] add button for creating new Page
-- [ ] add menu for picking diff colors of line & stroke colors & fill 
-- [ ] понять как работает логика создания прямуголника и как сделат предпросмотр
+- [X] add button for creating new Page
+- [X] add menu for picking diff colors of line & stroke colors & fill 
 - [ ] создать кнопку обратного действия 
 .toDataUrl - создать из холста изображение
 jsPDF - для вставки картирнки

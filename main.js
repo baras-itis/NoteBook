@@ -3,13 +3,6 @@ import { color } from "./src/copmonents/changeColor.js"
 // Ширина и высота
 const [width, height] = [1200, 800];
 
-var p = 10;
-var draw = false
-
-
-
-
-
 // Координаты
 let [x, y] = [0, 0];
 
