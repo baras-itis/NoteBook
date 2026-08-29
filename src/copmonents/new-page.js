@@ -4,7 +4,7 @@ const button = document.getElementById("new-page");
 const pages = document.getElementById("pages")
 let newPage = false;
 let blackboard;
-const [width, height] = [1200, 800];
+const [width, height] = [window.innerWidth - 50, window.innerHeight - 50];
 let isDrawing = false;
 let [x, y] = [0, 0];
 button.addEventListener("mousedown", event => {

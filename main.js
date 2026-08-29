@@ -1,7 +1,7 @@
 // Переменная содержащая наш цвет
 import { color } from "./src/copmonents/changeColor.js"
 // Ширина и высота
-const [width, height] = [1200, 800];
+const [width, height] = [window.innerWidth - 20, window.innerHeight - 50];
 
 // Координаты
 let [x, y] = [0, 0];

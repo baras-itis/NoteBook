@@ -1,79 +1,5 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background-color: #f5f5f7;
-}
-
-main {
-    display: flex;
-    grid-template-columns: 120px 1fr 1fr;
-    height: auto;
-    padding: 0 20px 0 20px;
-    gap: 20px;
-}
-
-header {
-    display: flex;
-    position: fixed;
-    margin-bottom: 10rem;
-    background-color: rgba(255, 255, 255, 0.2);
-    /*filter: drop-shadow(0 0 0.75rem rgba(128, 0, 128, 0.617));*/
-    box-shadow: 10px 10px 10px #003049;
-    place-content: space-between;
-    width: 100%;
-    border: 1px solid black;
-    padding: 2rem;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: -3px;
-}
-
-button:hover {
-    scale: calc(1.1)
-}
-
-button:active {
-    scale: calc(0.9);
-}
-
-#tools {
-    display: flex;
-    place-items: center;
-}
-
-#clear {
-    background-color: #ED1046;
-    border: none;
-    color: white;
-
-}
-
-ul {
-    list-style: none;
-    text-transform: uppercase;
-    display: grid;
-    gap: 20px;
-    text-align: center;
-}
-
-li {
-    align-content: center;
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid black;
-    background-color: white;
-    height: 60px;
-}
-
-li:hover {
-    column-span: all;
-    color: red;
-}
+@import url('https://fonts.googleapis.com/css2?family=Oi&display=swap');
+@import "tailwindcss";
 
 #black-board {
     grid-column-end: 5;
@@ -82,41 +8,12 @@ li:hover {
     grid-column: 2 / 4;
     grid-row: 2;
 
-    /* Размер доски */
-    width: 1200px;
-    height: 800px;
 
     /* Фон доски */
-    background-color: #003049;
+    background-color: oklch(27.9% 0.041 260.031);
 
     background-image:
         linear-gradient(to right, rgba(255, 255, 255, .15) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, .15) 1px, transparent 1px);
     background-size: 40px 40px;
-}
-
-#menu {
-    grid-row-start: 2;
-    align-content: center;
-    align-items: center;
-    background-color: #003049;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 20px;
-}
-
-
-button {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    width: 90px;
-    height: 40px;
-    margin-right: 5px;
-    text-transform: uppercase;
-    color: white;
-    background-color: black;
-    border-radius: 10px;
-}
-
-#black {
-    background-color: #003049;
 }
