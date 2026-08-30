@@ -4,16 +4,21 @@
 #black-board {
     grid-column-end: 5;
     border: 1px solid black;
-    border-radius: 1rem;
     grid-column: 2 / 4;
     grid-row: 2;
 
 
-    /* Фон доски */
     background-color: oklch(27.9% 0.041 260.031);
 
     background-image:
         linear-gradient(to right, rgba(255, 255, 255, .15) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, .15) 1px, transparent 1px);
     background-size: 40px 40px;
+}
+
+body {
+    overflow: scroll;
+    scrollbar-color: blue black;
+    overflow-x: clip;
+    background-color: #0a0e17;
 }
